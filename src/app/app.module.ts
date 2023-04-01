@@ -17,6 +17,10 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatSelectModule} from '@angular/material/select';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import {MatTableModule} from '@angular/material/table';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatSort, MatSortModule } from '@angular/material/sort';
+
 
 @NgModule({
   declarations: [
@@ -39,6 +43,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatSelectModule,
     ReactiveFormsModule,
     HttpClientModule,
+    MatTableModule,
+    MatPaginatorModule,MatSortModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
