@@ -2,25 +2,26 @@
     <h1>Employee Form</h1>
 </div>
 
+<form [formGroup]="empForm" (ngSubmit)="onFormSubmit()">
 <div mat-dialog-content class="content">
     <div class="row">
         <mat-form-field appearance="outline">
             <mat-label>FirstName</mat-label>
-            <input matInput type="text">
+            <input matInput type="text" formControlName="firstName">
         </mat-form-field>
         <mat-form-field appearance="outline">
             <mat-label>LastName</mat-label>
-            <input matInput type="text">
+            <input matInput type="text" formControlName="lastName">
         </mat-form-field>
     </div>
     <div class="row">
         <mat-form-field appearance="outline">
             <mat-label>Email</mat-label>
-            <input matInput type="email" placeholder="example@gmail.com">
+            <input matInput type="email" placeholder="example@gmail.com" formControlName="email">
         </mat-form-field>
         <mat-form-field appearance="outline">
             <mat-label>DOB</mat-label>
-            <input matInput [matDatepicker]="picker">
+            <input matInput [matDatepicker]="picker" formControlName="dob">
             <mat-hint>MM/DD/YYYY</mat-hint>
             <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
@@ -29,18 +30,18 @@
     <div class="row">
         <mat-form-field appearance="outline">
             <mat-label>Contact</mat-label>
-            <input matInput type="number" placeholder="999-999-9999">
+            <input matInput type="number" placeholder="999-999-9999" formControlName="contact">
         </mat-form-field>
         <mat-form-field appearance="outline">
             <mat-label>Position</mat-label>
-            <mat-select>
+            <mat-select formControlName="positionOf">
                 <mat-option *ngFor="let val of position" [value]="val"> {{val}}
                 </mat-option>
             </mat-select>
         </mat-form-field>
     </div>
     <div class="row">
-        <mat-radio-group aria-label="Select an option">
+        <mat-radio-group aria-label="Select an option" formControlName="gender">
             <mat-label>Gender</mat-label>
             <mat-radio-button value="male">Male</mat-radio-button>
             <mat-radio-button value="female">Female</mat-radio-button>
@@ -50,6 +51,7 @@
 </div>
 
 <div mat-dialog-actions class="buttons">
-    <button mat-raised-button color="primary">Save</button>
+    <button mat-raised-button color="primary" type="submit">Save</button>
     <button mat-raised-button mat-dialog-close color="warn">Cancel</button>
 </div>
+</form>
