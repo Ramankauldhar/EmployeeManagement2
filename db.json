@@ -1,21 +1,24 @@
 {
-  "posts": [
+  "employees": [
     {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    }
-  ],
-  "comments": [
+      "firstName": "r",
+      "lastName": "r",
+      "email": "r@gmail.com",
+      "dob": "2023-04-01T04:00:00.000Z",
+      "contact": 98765432536,
+      "positionOf": "Administrator",
+      "gender": "female",
+      "id": 1
+    },
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "firstName": "T",
+      "lastName": "T",
+      "email": "T@gmail.com",
+      "dob": "2023-04-04T04:00:00.000Z",
+      "contact": 4536782345,
+      "positionOf": "Administrator",
+      "gender": "female",
+      "id": 2
     }
-  ],
-  "profile": {
-    "name": "typicode"
-  },
-
-  "employees":[]
+  ]
 }
