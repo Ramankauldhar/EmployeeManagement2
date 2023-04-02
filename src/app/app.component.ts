@@ -13,7 +13,7 @@ import {MatTableDataSource} from '@angular/material/table';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'firstName', 'lastName', 'email', 'dob', 'contact', 'positionOf', 'gender'];
+  displayedColumns: string[] = ['id', 'firstName', 'lastName', 'email', 'dob', 'contact', 'positionOf', 'gender', 'actions'];
   dataSource! : MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator! : MatPaginator;
@@ -28,7 +28,14 @@ export class AppComponent implements OnInit {
   }
 
   openForm(){
-    this._dialog.open(EmpAddComponent);
+   const dialogRef = this._dialog.open(EmpAddComponent);
+   dialogRef.afterClosed().subscribe({
+    next: (val) => {
+      if(val){
+        this.getEmplyeeData();
+      }
+    }
+   });
   }
 
   getEmplyeeData(){
@@ -50,4 +57,28 @@ export class AppComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
+
+  deleteEmpData(id: number){
+    this._empService.deleteEmpData(id).subscribe({
+      next: (res) => {
+        //alert('Employee Data is deleted! ');
+        this.getEmplyeeData();
+      },
+      error: console.log,
+    });
+  }
+
+  openEditForm(data: any){
+    const dialogRef = this._dialog.open(EmpAddComponent,{
+      data
+    });
+    dialogRef.afterClosed().subscribe({
+      next: (val) => {
+        if(val){
+          this.getEmplyeeData();
+        }
+      }
+     });
+
+   }
 }
